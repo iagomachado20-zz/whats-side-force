@@ -1,0 +1,25 @@
+header {
+  margin-bottom: 10%;
+}
+
+header > .title-hero, header .Typewriter {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 7.2rem;
+  color: var(--color-primary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+header > p {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  margin: 0;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  letter-spacing: 0.35em;
+}
