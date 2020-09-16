@@ -3,6 +3,12 @@
 :root {
   --color-primary: #2C97D1;
   --color-primary-dark: #2a6483;
+  --bg-dark: #2A2A2A;
+  --bg-yellow: #FBFE63;
+}
+
+* {
+  font-family: 'Montserrat', sans-serif;
 }
 
 body, html {
@@ -20,10 +26,34 @@ body, html {
   box-sizing: border-box;
   display: flex;
   text-align: center;
+  position: relative;
   flex-direction: column;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
+}
+
+.container-background.dark {
+  background: var(--bg-dark);
+  color: #ffffff;
+}
+
+.container-background.dark .back-button {
+  color: #ffffff;
+}
+
+.container-background.yellow {
+  background: var(--bg-yellow);
+  color:var(--bg-dark);
+}
+
+.container-background.yellow .back-button .ico {
+  filter: invert(1);
+}
+
+.container-background.yellow .button-line {
+  color: var(--bg-yellow);
+  background: var(--bg-dark);
 }
 
 .button {
@@ -60,4 +90,18 @@ body, html {
   position: absolute;
   right: 15px;
   top: 7px;
+}
+
+.button-line {
+  background: #FFFFFF;
+  color: #2A2A2A;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  height: 55px;
+  font-weight: bold;
+  border: 0;
+  font-family: 'Montserrat', sans-serif;
+  padding: 0 20px;
+  outline: none;
 }

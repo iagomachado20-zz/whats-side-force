@@ -5,12 +5,18 @@ import {
   Route
 } from 'react-router-dom';
 
-import { HomePage } from './pages/index';
+import { HomePage, DetailPage } from './pages/index';
 
 function App() {
   return (
     <Router>
       <Switch>
+        <Route path="/home">
+          <HomePage />
+        </Route>
+        <Route path="/side-force">
+          <DetailPage />
+        </Route>
         <Route path="/">
           <HomePage />
         </Route>

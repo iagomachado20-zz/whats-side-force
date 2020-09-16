@@ -15,7 +15,7 @@ export const HomePage = () => {
   }
 
   return (
-    <main className="container-background">
+    <main className="container-background dark">
       <header>
         <Typewriter
           options={{
