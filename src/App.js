@@ -4,24 +4,28 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store/index';
 
 import { HomePage, DetailPage } from './pages/index';
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/home">
-          <HomePage />
-        </Route>
-        <Route path="/side-force">
-          <DetailPage />
-        </Route>
-        <Route path="/">
-          <HomePage />
-        </Route>
-      </Switch>
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route path="/home">
+            <HomePage />
+          </Route>
+          <Route path="/side-force">
+            <DetailPage />
+          </Route>
+          <Route path="/">
+            <HomePage />
+          </Route>
+        </Switch>
     </Router>
+    </Provider>
   );
 }
 

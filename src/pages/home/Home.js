@@ -1,21 +1,25 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import Typewriter from 'typewriter-effect';
 
 import { LoaderComponent } from '../../components/loader/Loader';
+import { Dispatchers } from '../../store/ducks/app';
 import './Home.css';
 
 
-export const HomePage = () => {
+const HomeComponent = ({ app }) => {
+
+  console.log(app);
 
   const [ isRequesting, callRequest ] = useState(false);
 
   function requestData() {
-    console.log('oi');
+    Dispatchers.fetchData();
     return true;
   }
 
   return (
-    <main className="container-background dark">
+    <main className="container-background">
       <header>
         <Typewriter
           options={{
@@ -34,3 +38,12 @@ export const HomePage = () => {
     </main>
   );
 };
+
+
+const mapStateToProps = state => ({
+  app: state.app
+});
+
+const HomePage = connect(mapStateToProps)(HomeComponent);
+
+export { HomePage }; 
