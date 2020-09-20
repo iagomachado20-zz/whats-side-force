@@ -6,24 +6,28 @@ const appService = new AppService();
 export const Types = {
   FETCH_DATA: 'FETCH_DATA',
   FETCH_FAILED: 'FETCH_FAILED',
-  FETCH_DATA_SUCCESS: 'FECTCH_DATA_SUCCESS'
+  FETCH_DATA_SUCCESS: 'FETCH_DATA_SUCCESS'
 };
 
 const initialState = {
+  loading: false,
   person: {
     theme: appService.themes.DARK,
-    name: 'Luka',
+    name: null,
     avatar: null
   },
   success: null
 };
 
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case Types.FETCH_DATA_SUCCESS:
-      return { ...state, person: action.payload.person, success: true };
+      return { person: action.payload.person, success: true, loading: false };
     case Types.FETCH_FAILED:
-      return { ...state, success: false };  
+      return { ...state, success: false };
+    case Types.FETCH_DATA:
+      return { ...state, loading: action.payload.loading };    
     default:
       return state;
   }
@@ -38,10 +42,12 @@ export const Dispatchers = {
     type: Types.FETCH_DATA_SUCCESS,
     payload: {
       person: dataPerson
-    },
+    }
   }),
   fetchData: () => Store.dispatch({
     type: Types.FETCH_DATA,
-    payload: {}
+    payload: {
+      loading: true
+    }
   })
 };

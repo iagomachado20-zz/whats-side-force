@@ -100,6 +100,7 @@ body, html {
   border-radius: 10px;
   height: 55px;
   font-weight: bold;
+  flex-shrink: 0;
   border: 0;
   font-family: 'Montserrat', sans-serif;
   padding: 0 20px;

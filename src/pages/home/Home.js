@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Typewriter from 'typewriter-effect';
+
+import { Redirect } from 'react-router-dom';
 
 import { LoaderComponent } from '../../components/loader/Loader';
 import { Dispatchers } from '../../store/ducks/app';
@@ -8,14 +10,19 @@ import './Home.css';
 
 
 const HomeComponent = ({ app }) => {
+  
+  const { loading, success } = app;
 
-  console.log(app);
 
-  const [ isRequesting, callRequest ] = useState(false);
+  if (success) {
+    return (
+      <Redirect to="/side-force" />
+    )
+  }
+
 
   function requestData() {
     Dispatchers.fetchData();
-    return true;
   }
 
   return (
@@ -31,9 +38,9 @@ const HomeComponent = ({ app }) => {
         <p>FrontEnd Challenge</p> 
       </header>
       <button className="button button-primary" 
-        onClick={() => callRequest(requestData)}>
-        { isRequesting ? 'Wait' : 'Start'} 
-        { isRequesting &&  <LoaderComponent/> } 
+        onClick={() => requestData() }>
+        { loading ? 'Wait' : 'Start'} 
+        { loading &&  <LoaderComponent/> } 
       </button>
     </main>
   );

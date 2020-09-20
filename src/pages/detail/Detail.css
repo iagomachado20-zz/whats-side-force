@@ -12,6 +12,24 @@ h2 {
 }
 
 .button-line {
-  margin-bottom: 2%;
+  margin-bottom: 1%;
 }
 
+.button-line.loading {
+  opacity: 0.5;
+}
+
+
+@media (max-width: 800px) {
+  .avatar-person {
+    width: 70%;
+  }
+  .button-line  {
+    order: 3;
+    font-size: 14px;
+  }
+  .back-button {
+    left: 5%;
+    top: 5%;
+  }
+}

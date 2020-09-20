@@ -4,13 +4,18 @@ import { Dispatchers, Types } from '../store/ducks/app';
 
 const appService = new AppService();
 
-function* loadData(action) {
+function* loadData() {
 
   try {
 
-    const person = yield call(appService.fetchData());
+    let result1 = yield call(() => appService.fetchData(1));
+    let result2 = yield call(() => appService.fetchData(4));
 
-    yield put(Dispatchers.setDataRequest(person));
+    const resultRandom = appService.getPersonRandom([result1, result2]);
+
+    appService.factoryThemeByPerson(resultRandom);
+
+    yield put(Dispatchers.setDataRequest(resultRandom));
 
   } catch {
 
